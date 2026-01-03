@@ -7,7 +7,19 @@
     body {
     font-family: 'trebuchet ms', 'lucida sans unicode', 'lucida grande', 'lucida sans', arial, sans-serif;
     text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: rgb(12, 145, 83);
+}
+
+.container {
     
+  background: rgba(255, 255, 255, 0.757);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
 #output{
@@ -17,6 +29,7 @@
     margin: 20px auto;
     padding: 10px;
     border-radius: 10px;
+    
 }
 
 #output.warning {
@@ -87,10 +100,12 @@ console.log(new Date());
 <body>
 
 
-    <h1>Kapitaal en Rente</h1>
-
-
     
+
+
+ <div class="container">
+   <h1>Kapitaal en Rente</h1>
+
    <label>Kapitaal</label>
     <input type="text" id="kapitaal" value="1000" />
 
@@ -115,7 +130,7 @@ console.log(new Date());
     <div id="output">
         Hier komt straks de berekening
     </div>
-
+</div>
 
   
 </body>
