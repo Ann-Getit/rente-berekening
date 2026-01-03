@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kapitaal</title>
+<style>
+    body {
+    font-family: 'trebuchet ms', 'lucida sans unicode', 'lucida grande', 'lucida sans', arial, sans-serif;
+    text-align: center;
+    
+}
+
+#output{
+    border: 2px solid green;
+    background-color: lightgreen;
+    width: 300px;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#output.warning {
+    background-color: pink;
+    border-color: red;
+    color: red;
+    font-weight: bold;
+
+    label {
+        font-weight: bold;
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+
+    input {
+        width: 60px;
+    }
+}
+</style>
+<script>
+    function bereken()
+    {
+        //refactoring: herschrijf de code om het wat netter te maken, zonder verschil te zien aan de buitenkant.
+        // DRY: Don't Repeat Yourself
+        var output = document.getElementById('output');
+
+            output.innerHTML = ''; 
+             output.className = '';
+
+        var kapitaal = document.getElementById('kapitaal').value;
+        var rente = document.getElementById('rente').value;
+        var looptijd = document.getElementById('looptijd').value;
+        looptijd = parseInt(looptijd);
+        
+        if (isNaN(kapitaal))
+    {
+        output.innerHTML = "Let op! Voer een getal in";
+       //Stop de functie als de invoer geen getal is
+        
+       output.className = "warning";
+          return;
+
+    }
+
+
+
+console.log(new Date());
+
+        var vandaag = new Date();
+        var start = vandaag.getFullYear() + 1; 
+
+        var factor = 1 + rente / 100;
+
+        for(var index = start; index < start + looptijd; index++)
+    {
+
+        kapitaal *= factor;
+
+        output.innerHTML += `<p>In het jaar ${index} heb je ${kapitaal.toFixed(2)} euro </p>`;
+
+    } 
+}
+    
+</script>
+</head>
+
+<body>
+
+
+    <h1>Kapitaal en Rente</h1>
+
+
+    
+   <label>Kapitaal</label>
+    <input type="text" id="kapitaal" value="1000" />
+
+
+   <label>Rente</label>
+    <input type="number" id="rente" value="2" min="0" max="10" steps="0.5"/>
+
+    <label>looptijd</label>
+    <select id="looptijd" size="4">
+        <option>5 jaar</option>
+        <option selected>10 jaar</option>
+        <option>20 jaar</option>
+        <option>30 jaar</option>
+    </select>
+
+    
+
+    <button onclick="bereken()">berekenen</button>
+
+    
+
+    <div id="output">
+        Hier komt straks de berekening
+    </div>
+
+
+  
+</body>
+</html>
